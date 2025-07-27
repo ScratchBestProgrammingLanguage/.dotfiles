@@ -1,0 +1,74 @@
+#-- Variables --#
+
+set $mod Mod4
+
+set $term kitty
+set $menu tofi-drun | xargs swaymsg exec --
+
+set $main_monitor DP-1
+set $secondary_monitor HDMI-A-1
+
+# Vim movements
+set $left h
+set $down j
+set $up k
+set $right l
+
+#-- Bindings --#
+bindsym $mod+Return exec $term
+bindsym $mod+Backspace kill
+bindsym $mod+Space exec $menu
+
+bindsym $mod+f fullscreen
+bindsym $mod+shift+f floating toggle
+
+bindsym $mod+i exec firefox --private-window
+bindsym $mod+Shift+c reload
+
+bindsym $mod+$left focus left
+bindsym $mod+$right focus right
+bindsym $mod+$up focus up 
+bindsym $mod+$down focus down
+
+bindsym $mod+s exec grim -g "$(slurp)"
+
+floating_modifier $mod normal
+
+#-- Monitors --#
+output $main_monitor {
+	resolution 2560x1440@180Hz
+	position 0 0
+}
+
+#-- Bar --#
+bar {
+    position top
+    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+
+    # Tokyo Night custom colors
+    colors {
+        statusline #c0caf5
+        background #1a1b26
+        inactive_workspace #1a1b26 #1a1b26 #c0caf5
+        focused_workspace #24283b #24283b #c0caf5
+        active_workspace #24283b #24283b #c0caf5
+    }
+}
+
+#-- Border --#
+default_border pixel
+default_floating_border pixel
+client.focused #414868 #414868 #414868 #414868 #414868
+client.focused_inactive #1a1b26 #1a1b26 #1a1b26 #1a1b26 #1a1b26
+client.unfocused #1a1b26 #1a1b26 #1a1b26 #1a1b26 #1a1b26
+
+#-- Input --#
+input * {
+	accel_profile "flat"
+}
+
+#-- Wallpaper --#
+output * bg "~/.config/wallpapers/maxwell.jpg" stretch
+
+#-- Extra configs --#
+include config.d/*.sway
