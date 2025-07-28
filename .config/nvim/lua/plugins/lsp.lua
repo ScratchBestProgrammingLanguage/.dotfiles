@@ -10,15 +10,22 @@ local keymaps = {
     { "<leader>lr", vim.lsp.buf.rename,         desc = "[L]sp [R]ename" },
 }
 
--- Zls specific
-vim.lsp.enable("zls")
+local servers = {
+    "zls",
+    "rust_analyzer",
+    "lua_ls"
+}
+
+local function init_servers()
+    for _, server in ipairs(servers) do
+        vim.lsp.enable(server)
+    end
+end
+
 
 return {
-    "mason-org/mason-lspconfig.nvim",
-    opts = {},
-    dependencies = {
-        { "mason-org/mason.nvim", opts = {} },
-        "neovim/nvim-lspconfig",
-    },
-    key = keymaps,
+    "neovim/nvim-lspconfig",
+    config = init_servers,
+    keys = keymaps,
+    lazy = false,
 }
