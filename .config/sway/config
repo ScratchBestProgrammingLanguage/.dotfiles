@@ -30,7 +30,7 @@ bindsym $mod+$right focus right
 bindsym $mod+$up focus up 
 bindsym $mod+$down focus down
 
-bindsym $mod+s exec grim -g "$(slurp)"
+bindsym $mod+s exec grim -g "$(slurp -d)" - | wl-copy -t image/png
 
 floating_modifier $mod normal
 
