@@ -8,3 +8,12 @@ vim.opt.expandtab = true
 
 -- For obsidian
 vim.opt.conceallevel = 1
+
+-- Inline error
+vim.diagnostic.enable = true
+vim.diagnostic.config({
+    virtual_text = true,
+})
+
+-- Inline hints
+vim.lsp.inlay_hint.enable(true)

@@ -8,6 +8,9 @@ set $menu tofi-drun | xargs swaymsg exec --
 set $main_monitor DP-1
 set $secondary_monitor HDMI-A-1
 
+set $main_monitor_vr "ASUSTek COMPUTER INC VG259QM M3LMQS250394"
+set $secondary_monitor_vr "Dell Inc. DELL U2410 F525M1AVAT0L"
+
 # Vim movements
 set $left h
 set $down j
@@ -38,6 +41,11 @@ floating_modifier $mod normal
 output $main_monitor {
 	resolution 2560x1440@180Hz
 	position 0 0
+    adaptive_sync off
+}
+
+output $main_monitor_vr {
+    resolution 1920x1080@239.760Hz
 }
 
 #-- Bar --#
@@ -72,3 +80,6 @@ output * bg "~/.config/wallpapers/maxwell.jpg" stretch
 
 #-- Extra configs --#
 include config.d/*.sway
+
+#-- Temporary vrr fix --#
+exec "~/.config/sway/scripts/vrr_fullscreen.sh"

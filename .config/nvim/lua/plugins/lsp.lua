@@ -13,7 +13,10 @@ local keymaps = {
 local servers = {
     "zls",
     "rust_analyzer",
-    "lua_ls"
+    "lua_ls",
+    "tinymist",
+    "clangd",
+    "glsl_analyzer"
 }
 
 local function init_servers()
